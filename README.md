@@ -1,4 +1,4 @@
-# merciqiao-vue
+# sub-manage
 
 > 这是一个基于vue+elementUI开发的后台管理系统，适用于四川工商学院科研成果管理。
 
