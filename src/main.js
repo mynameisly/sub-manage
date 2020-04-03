@@ -13,6 +13,7 @@ import 'babel-polyfill'
 import util from './common/util'
 import Vuex from 'vuex'
 import store from './store'
+import particlesJS from 'particles.js';
 // import CKEditor from '@ckeditor/ckeditor5-vue';
 window.moment=require('moment')
 
@@ -30,6 +31,7 @@ Vue.config.productionTip = false
 // Vue.use(ElementUI);
 Vue.use(util);
 Vue.use(Vuex);
+Vue.use(particlesJS)
 // Vue.use(CKEditor);
 
 import permission from './directive'

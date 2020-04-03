@@ -123,22 +123,22 @@ var mockObj={
         
                             //     ]
                             // },
-                            {
-                                "id":7,
-                                "menuCode":null,
-                                "menuName":"标签选项卡",
-                                "menuIcon":"0",
-                                "menuUrl":null,
-                                "parentId":"2",
-                                "orderBy":"2",
-                                "isShow":1,
-                                "resoure_url":"FlowMonitor/index",
-                                "resoure_type":"url",
-                                "permission":"tabpage",
-                                "sysMenuVoChild":[
+                            // {
+                            //     "id":7,
+                            //     "menuCode":null,
+                            //     "menuName":"标签选项卡",
+                            //     "menuIcon":"0",
+                            //     "menuUrl":null,
+                            //     "parentId":"2",
+                            //     "orderBy":"2",
+                            //     "isShow":1,
+                            //     "resoure_url":"FlowMonitor/index",
+                            //     "resoure_type":"url",
+                            //     "permission":"tabpage",
+                            //     "sysMenuVoChild":[
         
-                                ]
-                            },
+                            //     ]
+                            // },
                             {
                                 "id":22,
                                 "menuCode":null,

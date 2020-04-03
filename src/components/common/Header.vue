@@ -36,7 +36,7 @@
                         <a  @click="go">
                             <el-dropdown-item>关于作者</el-dropdown-item>
                         </a>
-                        <a href="https://github.com/merciqiao/merciqiao-vue" target="_blank">
+                        <a href="https://github.com/mynameisly/sub-manage" target="_blank">
                             <el-dropdown-item>项目仓库</el-dropdown-item>
                         </a>
                         <el-dropdown-item divided  command="changeZh">切换中文</el-dropdown-item>

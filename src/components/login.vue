@@ -1,194 +1,227 @@
 <template>
-    <div class="login_wrapper">
-        <div class="login">
-            <el-form :model="formLogin">
-                <el-form-item>
-                    <h2 class="title">后台管理系统</h2>
-                </el-form-item>
-                <el-form-item>
-                    <el-input v-model="formLogin.loginName" placeholder="账号"></el-input>
-                </el-form-item>
-                <el-form-item>
-                    <el-input v-model="formLogin.password" placeholder="密码"></el-input>
-                </el-form-item>
-                <el-form-item>
-                    <el-button type="primary" @click="login">登陆</el-button>
-                    <span v-show="this.errorInfo.isShowError" class='error'>
-                        {{this.errorInfo.text}}
-                    </span>
-                </el-form-item>
-
-            </el-form>
-            
+  <div id="particlesId">
+    <h1 class="title">四川工商学院科研管理系统</h1>
+    <div class="login-warp">
+      <el-form :model="loginForm">
+        <el-form-item prop="username" label="用户名：">
+          <i class="el-icon-user"></i>
+          <el-input
+            v-model="loginForm.username"
+            placeholder="用户名长度必须在6-16之间，且不能包含非法字符*#@" />
+        </el-form-item>
+        <el-form-item prop="password"  label="密码：">
+          <i class="el-icon-key"></i>
+          <el-input
+            v-model="loginForm.password"
+            show-password
+            placeholder="密码长度必须在6-16之间，且必须包含数字和字母" />
+        </el-form-item>
+        <el-form-item prop="checkcode" label="验证码：">
+          <i class="el-icon-folder-checked"></i>
+          <el-input
+            v-model="loginForm.checkcode"
+            placeholder="请输入验证码"
+            @keydown.enter.native="login('loginForm')">
+          </el-input>
+          <span class="checkcode" @click="createCode">{{ ckcode }}</span>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="login('loginForm')">登录</el-button>
+        </el-form-item>
+        <div class="login-foot">
+          <a @click="go" class="pwd">立即注册</a>
+          <a href="" class="pwd">忘记密码？</a>
         </div>
-        <p class="bei">京ICP备18050367号-1</p>
-        <p  class ='recover' @click="rollBackTables">如果登陆数据异常,点此恢复数据</p>
-        
+      </el-form>
     </div>
+  </div>
 </template>
 
-<style lang="scss">
-$input_width:300px;
-
-.login_wrapper {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .login {
-        width: 460px;
-        height: 296px;
-        margin-top: -150px;
-        border: 1px solid #eaeaea;
-        box-shadow: 0 0 25px #cac6c6;
-        .title {
-            text-align: center;
-            color: #505458;
-        }
-        .el-form-item__content {
-            width: $input_width;
-        }
-        .el-button {
-            width: $input_width;
-        }
-        .el-form {
-            margin: 30px 80px auto 80px;
-            .error {
-                display: block;
-                text-align: center;
-                color: red;
-            }
-        }
-    }
-}
-.recover{
-    position:absolute;
-    bottom:0px; 
-    cursor:pointer; 
-    color:#E6A23C;
-    // display: none;
-}
-.bei{
-    position:absolute;
-    bottom:20px; 
-    cursor:pointer; 
-    color:#505458;
-}
-</style>
-
 <script>
+import particlesConfig from '@/assets/particleConfig.json'
 import apis from '../apis/apis';
 export default {
     name: 'login',
     data() {
-        return {
-            formLogin: {   //表单对象
-                loginName: 'admin',
-                password: '123456'
-            },
-            errorInfo: {
-                text: '登陆失败,请重试',
-                isShowError: false //显示错误提示
-            }
-
+        const validateNumber = (rule, value, callback) => {
+        var reg = /^[0-9a-zA-Z]{6,16}$/ // 账号长度必须在6-16之间，且不能包含非法字符*#@
+        if (value === '' || value === undefined) {
+          callback(new Error('请输入用户名'))
+        } else if (value.length < 6 || value.length > 18) {
+          callback(new Error('用户名长度必须在6-16之间'))
+        } else if (value.indexOf('*') > 0 || value.indexOf('#') > 0 || value.indexOf('@') > 0) {
+          callback(new Error('用户名不能含有非法字符*#@'))
+        } else {
+          if (reg.test(value)) {
+            callback()
+          }
         }
+      }
+      const validatePass = (rule, value, callback) => {
+        var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9a-zA-Z]{6,}$/ // 密码长度必须在6-16之间，且必须包含数字和字母
+        if (value === '' || value === undefined) {
+          callback(new Error('请输入密码'))
+        } else if (value.length < 6 || value.length > 18) {
+          callback(new Error('密码长度必须在6-16之间'))
+        } else if (/^[a-z]+$/.test(value) || /^[0-9]+$/.test(value)) {
+          callback(new Error('密码必须同时包含数字和字母'))
+        } else {
+          if (reg.test(value)) {
+            callback()
+          }
+        }
+      }
+      return {
+        loginForm: {
+          username: '',
+          password: '',
+          checkcode: ''
+        },
+        ckcode: '',
+        rules: {
+          username: [{ required: true, validator: validateNumber, trigger: 'blur' }],
+          password: [{ required: true, validator: validatePass, trigger: 'blur' }],
+          checkcode: [{ require: true, message: '请输入验证码', trigger: 'blur' }]
+        }
+      }
     },
     mounted() {
-        document.onkeydown = (event) => {
-            var router=this.$route.path;
-            var e = event || window.event || arguments.callee.caller.arguments[0];
-            if (e && e.keyCode == 13&&this.$route.path=='/login') { // enter 键 
-                this.login();
-            }
-        };
-         var loginLog = {
-                ip: returnCitySN["cip"],
-                city: returnCitySN["cname"] + '-' + '进入首页'
-            };
+      this.init()
+      this.createCode()
+        // document.onkeydown = (event) => {
+        //     var router=this.$route.path;
+        //     var e = event || window.event || arguments.callee.caller.arguments[0];
+        //     if (e && e.keyCode == 13&&this.$route.path=='/login') { // enter 键 
+        //         this.login();
+        //     }
+        // };
+        //  var loginLog = {
+        //         ip: returnCitySN["cip"],
+        //         city: returnCitySN["cname"] + '-' + '进入首页'
+        //     };
 
-            apis.shiroApi.loginLog(loginLog);
+        //     apis.shiroApi.loginLog(loginLog);
     },
     methods: {
-        login() {
-            //调用后端登陆接口
-            apis.shiroApi.loginIn(this.formLogin)
-                .then((data) => {
-                    console.log('success:', data);
-                    if (data && data.data) {
-                        var json = data.data;
-                        if (json.status == 'SUCCESS') {
-                            this.$common.setSessionStorage('token', json.data.userInfo.token);
-                            this.$common.setSessionStorage('username',json.data.userInfo.userName);
-                            this.$common.setSessionStorage('lev',json.data.sysRoleVoList);
-                            //存入菜单,渲染菜单
-                            this.$store.dispatch("add_Menus",json.data.sysMenuVoList);
-
-                             //动态设置路由
-                            this.$store.dispatch("add_Routes", json.data.sysMenuVoList);
-
-                            //存储按钮权限
-                            this.$store.dispatch("add_Permissions", json.data.rolePermissionVoList);
-                            this.$router.replace({ path: "/index" });
-                            
-                            var loginLog={
-                                ip:returnCitySN["cip"],
-                                city:returnCitySN["cname"]+'-'+json.data.userInfo.userName+'-登陆'
-                            };
-                            
-                            apis.shiroApi.loginLog(loginLog);
-                            return;
-                        }
-                        else if (json.message) {
-                            this.errorInfo.text = json.message;
-                        }
-                    }
-                    this.errorInfo.isShowError = true;
-                    this.$store.dispatch("loginLog",loginLog);
-                })
-                .catch((err) => {
-                    console.log('error:', err);
-                    this.errorInfo.isShowError = true;
-                    this.errorInfo.text = '系统接口异常';
-                });
-
-        },
-         rollBackTables() {
-            var text = '数据还原';
-            apis.shiroApi.rollBackTables()
-                .then(data => {
-                    var alertText='';
-                    if(data.data.status=='SUCCESS'){
-                        text += '成功';
-                        alertText=text+',请重新登陆';
-                    }
-                    else{
-                        text += '失败';
-                        alertText=text+',请重试';
-                    }
-                    this.$alert(alertText, '提示', {
-                        confirmButtonText: '确定',
-                    });
-                    log(text);
-                })
-                .catch(e => {
-                    this.$alert('数据还原异常,请重试', '提示', {
-                        confirmButtonText: '确定',
-                    });
-                    text += '失败';
-                    log(text);
-                });
-            console.log(text);
-
-            function log(text){
-                 var loginLog = {
-                ip: returnCitySN["cip"],
-                city: returnCitySN["cname"] + '-' + text
-            };
-
-            apis.shiroApi.loginLog(loginLog);
-            }
-           
+      go() {
+        this.$router.push({path: 'register'})
+      },
+      init () {
+        particlesJS('particlesId', particlesConfig)
+      },
+      createCode () { // 前端生成验证码
+        let code = ''
+        let codeLength = 4 // 验证码的长度
+        let random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z') // 随机数
+        for (let i = 0; i < codeLength; i++) { // 循环操作
+          let index = Math.floor(Math.random() * 36) // 取得随机数的索引（0~35）
+          code += random[index] // 根据索引取得随机数加到code上
         }
+        this.ckcode = code // 把code值赋给验证码
+      },
+      login() {
+        const username = this.loginForm.username
+        const password = this.loginForm.password
+        // 验证成功后发送请求，返回的数据就是information学籍信息
+        axios.get('/sub/userInfo/login?username=' + username + '&password=' + password).then(res => {
+          console.log(' login success')
+          console.log(res.data)
+          console.log(res.data.data)
+          if (res.data.code === 200) {
+            this.$message({
+              type: 'success',
+              message: '登录成功'
+            })
+            this.$router.push({path: '/index'})
+            // const user = res.data.userInfo.username
+            // sessionStorage.setItem('username', user)
+            // this.setUser({ user })
+            //存入菜单,渲染菜单
+            this.$store.dispatch("add_Menus",json.data.sysMenuVoList);
+              //动态设置路由
+            this.$store.dispatch("add_Routes", json.data.sysMenuVoList);
+            //存储按钮权限
+            this.$store.dispatch("add_Permissions", json.data.rolePermissionVoList);
+            this.$router.replace({ path: "/index" });
+          } else if (res.data.msg === '密码错误') {
+            this.$message({
+              type: 'warning',
+              message: '登录失败，密码错误'
+            })
+          } else {
+            this.$message({
+              type: 'warning',
+              message: '登录失败，用户名或密码错误'
+            })
+          }
+        })
+      }
     }
 }
 </script>
+
+<style lang="scss" scoped>
+#particlesId{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  background-color: #000000;
+}
+.particles-js-canvas-el{
+  height: 100vh!important;
+}
+#particlesId .title{
+  position: absolute;
+  left: 50%;
+  top: 12%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+.login-warp{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px 0;
+  padding-right: 30px;
+  width: 450px;
+  color: #fff;
+  background-color: rgba(49,143,254,.4);
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px lavenderblush;
+}
+.el-button{
+  width: 90%;
+  margin-left: 45px;
+  font-size: 14px;
+  padding: 10px 0;
+}
+.el-icon-user, .el-icon-key, .el-icon-folder-checked{
+  color: #fff;
+  font-size: 35px;
+  padding: 0 5px;
+}
+.checkcode{
+  color: #fff;
+}
+.login-foot{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 45px;
+}
+.login-foot a{
+  color: #fff;
+  text-decoration: none;
+}
+</style>
+
+<style lang="">
+.el-form-item__content{
+  display: flex;
+  margin-bottom: 15px;
+}
+.el-form-item__label {
+  color: #fff!important;
+  padding: 0 15px!important;
+}
+</style>

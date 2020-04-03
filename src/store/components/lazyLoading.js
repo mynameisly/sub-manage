@@ -38,40 +38,6 @@ const dynamicRouter = [
       title: '系统首页'
     }
   },
-  // {
-  //   name: 'searchinput',
-  //   path: '/searchinput',
-  //   component: resolve => require(['@/components/searchinput/searchinput.vue'], resolve),
-  //   meta: {
-  //     title: '查询输入页'
-  //   }
-  // },
-  {
-    name: 'tabpage',
-    path: '/tabpage',
-    component: resolve => require(['@/components/tabpage/tabpage.vue'], resolve),
-    meta: {
-      title: '标签选项卡'
-    }
-  },
-  {
-    name: 'tablepage',
-    path: '/tablepage',
-    component: resolve => require(['@/components/tablepage/tablepage.vue'], resolve),
-    meta: {
-      title: '综合表格页'
-    }
-  }
-  ,
-  {
-    name: 'formpage',
-    path: '/formpage',
-    component: resolve => require(['@/components/formpage/formpage.vue'], resolve),
-    meta: {
-      title: '表单页'
-    }
-  }
-  ,
   {
     name: 'treepage',
     path: '/treepage',
@@ -137,45 +103,11 @@ const dynamicRouter = [
     }
   },
   {
-    name: 'messageboard2',
-    path: '/messageboard2',
-    component: resolve => require(['@/components/tablepage/messageboard2.vue'], resolve),
-    meta: {
-      title: '增删改查二'
-    }
-  },
-  {
-    name: 'detail',
-    path: '/detail',
-    component: resolve => require(['@/components/tablepage/detail.vue'], resolve),
-    meta: { title: '详情页' }
-  },
-  {
     name: 'ckeditor',
     path: '/ckeditor',
     component: resolve => require(['@/components/ckeditor/index.vue'], resolve),
     meta: { title: '文本编辑器' }
   },
-  {
-    name: 'yanshi',
-    path: '/yanshi',
-    component: resolve => require(['@/components/yanshi/yanshi.vue'], resolve),
-    meta: { title: '使用演示' }
-  },
-  {
-    path: '/honor',
-    component: resolve => require(['@/components/other/honor'], resolve),
-    meta: {
-      title: '小荣誉'
-    }
-  },
-  {
-    path: '/shopping',
-    component: resolve => require(['@/components/goods/shopping'], resolve),
-    meta: {
-      title: '技能充电'
-    }
-  }
 ]
 export { lazy }
 

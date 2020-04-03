@@ -39,15 +39,6 @@
     <el-button type="warning" @click="openZanZhu">赞助</el-button>
     <br />
     <br />
-PS:烦请修改了数据的用户,记得恢复下数据
-    <!-- 扫码 start -->
-    <!-- <div class="hongbao_zanzhu">
-      扫码支持一下~
-      <img class='hongbao' src="static/img/hongbao.png">
-    </div>-->
-    <!-- 扫码 end -->
-
-    <br />
     <br />
       非常感谢
     <br />
@@ -60,24 +51,6 @@ PS:烦请修改了数据的用户,记得恢复下数据
           <td>赞助{{item.money}}元</td>
           <td>{{getDate(item.createtime)}}</td>
         </tr>
-        <!-- <tr><td>第九杯月亮：</td><td>赞助10元</td><td>2019-10-31</td></tr>
-        <tr><td>爱丽丝的疯帽子：</td><td>赞助20元</td><td>2019-10-16</td></tr>
-        <tr><td>壹克拉眼泪：</td><td>赞助20元</td><td>2019-10-06</td></tr>
-        <tr><td>Liu月：</td><td>赞助1元</td><td>2019-9-27</td></tr>
-        <tr><td>无忧：</td><td>赞助30元</td><td>2019-9-25</td></tr>
-        <tr><td>懒是原罪：</td><td>赞助15元</td><td>2019-9-6</td></tr>
-        <tr><td>河北：</td><td>赞助0.8元</td><td>2019-9-6</td></tr>
-        <tr><td>武汉-后端-星空：</td><td>赞助1元</td><td>2019-9-6</td></tr>
-        <tr><td>珠海-全栈-全干：</td><td>赞助5元</td><td>2019-9-6</td></tr>
-        <tr><td>深圳-杜雪：</td><td>赞助5元</td><td>2019-9-6</td></tr>
-        <tr><td>深圳-前端-亲亲：</td><td>赞助2.22元</td><td>2019-9-6</td></tr>
-        <tr><td>北京-我乖你给我买街：</td><td>赞助0.55元</td><td>2019-9-6</td></tr>
-        <tr><td>卖提莫的小男孩：</td><td>赞助5元</td><td>2019-9-6</td></tr>
-        <tr><td>命：</td><td>赞助10元</td><td>2019-9-2</td></tr>
-        <tr><td>顺势而为：</td><td>赞助100元</td><td>2019-9-1</td></tr>
-        <tr><td>顺势而为：</td><td>赞助2元</td><td>2019-8-25</td></tr>
-        <tr><td>*商：</td><td>赞助1元</td><td>2019-8-19</td></tr>
-        <tr><td>苏州-前端-离愁：</td><td>赞助50元</td><td>2019-8-13</td></tr> -->
       </table>
     </div>
   </div>
@@ -175,7 +148,7 @@ export default {
     } 
   },
   mounted() {
-    this.getZanZhu();
+    // this.getZanZhu();
   },
   computed:{
     

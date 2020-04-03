@@ -69,14 +69,6 @@ export default {
   },
   methods: {
     getlunboList () {
-      // const item = {
-      //   lunbo_name: '轮播名称。。。',
-      //   lunbo_img: '轮播名称。。。'
-      // }
-
-      // for (let i = 0; i < 5; i++) {
-      //   this.lunboList.push(item)
-      // }
       axios.get('/sub/line/findAllLine?page=1&pageSize=10').then((res) => {
         this.page.currentPage = res.data.data.currentPage
         this.page.pageSize = res.data.data.size
