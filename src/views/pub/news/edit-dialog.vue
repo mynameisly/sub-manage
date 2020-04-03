@@ -27,8 +27,8 @@
     </el-form>
 
     <span slot="footer">
-      <el-button type="success" plain @click="submitForm('dataForm')">提交</el-button>
-      <el-button type="warning" plain @click="resetForm('dataForm')">取消</el-button>
+      <el-button type="primary" plain @click="submitForm('dataForm')">提交</el-button>
+      <el-button type="primary" plain @click="resetForm('dataForm')">取消</el-button>
     </span>
   </el-dialog>
 </template>
