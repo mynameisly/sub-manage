@@ -16,6 +16,7 @@
           stripe
           height="80%"
           v-loading="loading"
+          :default-sort = "{prop: 'train_time', order: 'descending'}"
           element-loading-text="拼命加载中"
           @cell-mouse-enter="mouseEnter"
           @selection-change="handleSelectionChange">
@@ -36,6 +37,7 @@
           <el-table-column
             :label="$t('train.table.train_time.name')"
             prop="train_time"
+            sortable
           />
           <el-table-column
             :label="$t('train.table.operate')"

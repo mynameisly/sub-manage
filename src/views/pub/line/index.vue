@@ -25,6 +25,7 @@
           height="80%"
           v-loading="loading"
           element-loading-text="拼命加载中"
+          :default-sort="{prop: 'line_year',order: 'descending'}"
           @cell-mouse-enter="mouseEnter"
           @selection-change="handleSelectionChange">
           <el-table-column type="selection" align="center" />
@@ -40,6 +41,7 @@
           <el-table-column
             :label="$t('line.table.line_year.name')"
             prop="line_year"
+            sortable
           />
           <el-table-column
             :label="$t('line.table.line_title.name')"

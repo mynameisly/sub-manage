@@ -30,6 +30,8 @@
           height="80%"
           v-loading="loading"
           element-loading-text="拼命加载中"
+          :default-sort="{prop: 'sign_stime', order: 'descending'}"
+          :header-cell-class-name="handleHeaderCellClass"
           @cell-mouse-enter="mouseEnter"
           @selection-change="handleSelectionChange">
             <el-table-column type="selection" align="center" />
@@ -53,6 +55,7 @@
             <el-table-column
               :label="$t('sign.table.sign_stime.name')"
               prop="sign_stime"
+              sortable
             />
             <el-table-column
               :label="$t('sign.table.sign_etime.name')"

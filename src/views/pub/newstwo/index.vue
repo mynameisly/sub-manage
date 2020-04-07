@@ -24,6 +24,7 @@
           height="80%"
           v-loading="loading"
           element-loading-text="拼命加载中"
+          :default-sort="{prop: 'newstwo_time', order: 'descending'}"
           @cell-mouse-enter="mouseEnter"
           @selection-change="handleSelectionChange">
           <el-table-column type="selection" align="center" />
@@ -39,11 +40,12 @@
             <el-table-column
               :label="$t('newstwo.table.newstwo_content.name')"
               prop="newstwo_content"
-              width="600"
+              width="500"
             />
             <el-table-column
               :label="$t('newstwo.table.newstwo_time.name')"
               prop="newstwo_time"
+              sortable
             />
             <el-table-column
               :label="$t('newstwo.table.operate')"

@@ -104,13 +104,6 @@ var routeDevList = [
       }
     },
     {
-      path: '/pub/user',
-      component: () => import('@/views/pub/user/index'),
-      meta: {
-        title: '用户管理'
-      }
-    },
-    {
       name: 'treepage',
       path: '/treepage',
       component: resolve => require(['@/components/treepage/treepage.vue'], resolve),

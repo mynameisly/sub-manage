@@ -24,6 +24,7 @@
           height="80%"
           v-loading="loading"
           element-loading-text="拼命加载中"
+          :default-sort="{prop:'notice_time', order:'descending'}"
           @cell-mouse-enter="mouseEnter"
           @selection-change="handleSelectionChange">
             <el-table-column type="selection" align="center" />
@@ -39,10 +40,12 @@
             <el-table-column
               :label="$t('notice.table.notice_content.name')"
               prop="notice_content"
+              width="500"
             />
             <el-table-column
               :label="$t('notice.table.notice_time.name')"
               prop="notice_time"
+              sortable
             />
             <el-table-column
               :label="$t('notice.table.operate')"

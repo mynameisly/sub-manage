@@ -52,11 +52,18 @@ const dynamicRouter = [
     component: resolve => require(['@/components/admin/OrganizationTree.vue'], resolve),
     meta: { title: '机构管理' }
   },
+  // {
+  //   name: 'SysUser',
+  //   path: '/sysUser',
+  //   component: resolve => require(['@/components/admin/SysUser.vue'], resolve),
+  //   meta: { title: '用户管理' }
+  // },
   {
-    name: 'SysUser',
-    path: '/sysUser',
-    component: resolve => require(['@/components/admin/SysUser.vue'], resolve),
-    meta: { title: '用户管理' }
+    path: '/pub/user',
+    component: () => import('@/views/pub/user/index'),
+    meta: {
+      title: '用户管理'
+    }
   },
   {
     name: 'SysAcl',
