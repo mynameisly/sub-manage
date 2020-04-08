@@ -58,14 +58,14 @@ var routeDevList = [
       path: '/pub/newstwo',
       component: () => import('@/views/pub/newstwo/index'),
       meta: {
-        title: '二级新闻'
+        title: '新闻管理'
       }
     },
     {
       path: '/pub/notice',
       component: () => import('@/views/pub/notice/index'),
       meta: {
-        title: '二级公告'
+        title: '公告管理'
       }
     },
     {
@@ -86,7 +86,7 @@ var routeDevList = [
       path: '/pub/suctwo',
       component: () => import('@/views/pub/suctwo/index'),
       meta: {
-        title: '二级成果展示'
+        title: '成果展示'
       }
     },
     {
@@ -118,9 +118,9 @@ var routeDevList = [
       meta: { title: '机构管理' }
     },
     {
-      name: 'SysUser',
-      path: '/sysUser',
-      component: resolve => require(['@/components/admin/SysUser.vue'], resolve),
+      name: 'user',
+      path: '/pub/user',
+      component: resolve => require(['@/views/pub/user/index'], resolve),
       meta: { title: '用户管理' }
     },
     {
@@ -129,10 +129,16 @@ var routeDevList = [
       component: resolve => require(['@/components/admin/SysAcl.vue'], resolve),
       meta: { title: '角色资源管理' }
     },
+    // {
+    //   name: 'SysMenu',
+    //   path: '/sysMenu',
+    //   component: resolve => require(['@/components/admin/SysMenu.vue'], resolve),
+    //   meta: { title: '菜单管理' }
+    // },
     {
-      name: 'SysMenu',
-      path: '/sysMenu',
-      component: resolve => require(['@/components/admin/SysMenu.vue'], resolve),
+      name: 'menu',
+      path: '/pub/menu',
+      component: resolve => require(['@/views/pub/menu/index'], resolve),
       meta: { title: '菜单管理' }
     },
     {
@@ -182,12 +188,16 @@ var menuDevList = [
       title: '系统管理',
       subs: [
         {
-          index: '/organizationTree',
-          title: '机构管理'
+          index: '/pub/user',
+          title: '用户管理'
         },
         {
-          index: '/sysUser',
-          title: '用户管理'
+          index: '/pub/menu',
+          title: '菜单管理'
+        },
+        {
+          index: '/organizationTree',
+          title: '机构管理'
         },
         {
           index: '/SysRole',
@@ -196,10 +206,6 @@ var menuDevList = [
         {
           index: '/SysResource',
           title: '资源管理'
-        },
-        {
-          index: '/SysMenu',
-          title: '菜单管理'
         },
         {
           index: '/SysAcl',
@@ -237,44 +243,36 @@ var menuDevList = [
     {
       icon: 'el-icon-date',
       index: 3,
-      title: '静态菜单',
+      title: '二级菜单',
       subs: [
-          {
-            index: '/pub/down',
-            title: '资料下载'
-          },
-          {
-            index: '/pub/line',
-            title: '竞赛历程'
-          },
-          {
-            index: '/pub/menu',
-            title: '菜单管理'
-          },
-          {
-            index: '/pub/newstwo',
-            title: '二级新闻'
-          },
-          {
-            index: '/pub/notice',
-            title: '二级公告'
-          },
-          {
-            index: '/pub/sign',
-            title: '竞赛报名'
-          },
-          {
-            index: '/pub/suctwo',
-            title: '二级成果展示'
-          },
-          {
-            index: '/pub/team',
-            title: '团队建设'
-          },
-          {
-            index: '/pub/user',
-            title: '用户管理'
-          }
+        {
+          index: '/pub/newstwo',
+          title: '新闻管理'
+        },
+        {
+          index: '/pub/notice',
+          title: '公告管理'
+        },
+        {
+          index: '/pub/sign',
+          title: '竞赛报名'
+        },
+        {
+          index: '/pub/suctwo',
+          title: '成果展示'
+        },
+        {
+          index: '/pub/team',
+          title: '团队建设'
+        },
+        {
+          index: '/pub/line',
+          title: '竞赛历程'
+        },
+        {
+          index: '/pub/down',
+          title: '资料下载'
+        }
       ]
     },
     {

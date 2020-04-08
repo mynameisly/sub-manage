@@ -83,7 +83,7 @@
               align="center"
               width="100"
             >
-              <template>
+              <template slot-scope="scope">
                 <el-button
                   type="primary"
                   size="mini"
@@ -168,7 +168,7 @@ export default {
         this.page.totalPage = res.data.data.pages
         this.page.totalSize = res.data.data.total
         this.signList = res.data.data.list
-        // console.log(res.data.data.list)
+        console.log('111111111',res.data.data.list)
         this.loading = false
       })
     },

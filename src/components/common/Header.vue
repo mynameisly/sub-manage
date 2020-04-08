@@ -153,7 +153,7 @@
     }
     .header .logo{
         float: left;
-        width:250px;
+        width:320px;
         line-height: 70px;
     }
     .header-right{

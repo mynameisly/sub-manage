@@ -21,7 +21,7 @@
           :data="newstwoList"
           border
           stripe
-          height="80%"
+          height="395"
           v-loading="loading"
           element-loading-text="拼命加载中"
           :default-sort="{prop: 'newstwo_time', order: 'descending'}"
@@ -50,16 +50,16 @@
             <el-table-column
               :label="$t('newstwo.table.operate')"
               prop="operation"
-              align="center"
-              width="200"
+              width="90"
             >
-            <template>
+              <template slot-scope="scope">
                 <el-button
                   type="primary"
                   size="mini"
                   class="el-icon-edit"
                   @click.stop="$refs.updateDialog.open(focusedRecord)"
-                >修改</el-button>
+                >修改
+                </el-button>
               </template>
             </el-table-column>
         </el-table>

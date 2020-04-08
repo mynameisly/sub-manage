@@ -16,10 +16,10 @@
             type="index"
             width="55"
           />
-            <template slot-scope="scope">
-            <!-- (当前页 - 1) * 当前显示数据条数 + 当前行数据的索引 + 1 -->
+            <!-- <template slot-scope="scope">
+            (当前页 - 1) * 当前显示数据条数 + 当前行数据的索引 + 1 
             <span>{{ (page.currentPage - 1) * page.pageSize + scope.$index + 1 }}</span>
-            </template>
+            </template> -->
             <el-table-column
               :label="$t('lunbo.table.lunbo_name.name')"
               prop="lunbo_name"
@@ -44,7 +44,7 @@
               </template>
             </el-table-column>
         </el-table>
-        <page-component :total="page.totalSize" :page="page" @pageChange="(item)=>handlePageChange(item)" />
+        <!-- <page-component :total="page.totalSize" :page="page" @pageChange="(item)=>handlePageChange(item)" /> -->
         <add-dialog ref="addDialog" title="新增轮播" @OnConfirm="(item)=>addOne(item)" />
       </div>
     </div>

@@ -5,7 +5,7 @@
 
 module.exports = {
     home:{
-      'title' : '后台管理系统',
+      'title' : '四川工商学院科研成果管理系统',
     },
     footer:{
       'title':'四川工商学院科研成果管理平台',
@@ -156,14 +156,14 @@ module.exports = {
       total: '共有数据:',
       table: {
         id: { name: '序号' },
-        sign_img: { name: '二级竞赛报名图片' },
-        sign_title: { name: '二级竞赛标题' },
-        sign_stime: { name: '二级竞赛报名开始时间' },
-        sign_etime: { name: '二级竞赛报名结束时间' },
-        sign_sm_time: { name: '二级竞赛比赛开始时间' },
-        sign_em_time: { name: '二级竞赛比赛结束时间' },
-        totle_time: { name: '二级竞赛总时长' },
-        sign_sponsor: { name: '二级竞赛主办方' },
+        sign_img: { name: '比赛图片' },
+        sign_title: { name: '比赛名' },
+        sign_stime: { name: '报名开始时间' },
+        sign_etime: { name: '报名截止时间' },
+        sign_sm_time: { name: '比赛开始时间' },
+        sign_em_time: { name: '比赛结束时间' },
+        totle_time: { name: '总时长' },
+        sign_sponsor: { name: '主办方' },
         operate: '操作'
       },
     },

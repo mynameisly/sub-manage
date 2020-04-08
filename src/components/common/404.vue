@@ -2,8 +2,8 @@
     <div class="error-page">
         <div class="error-code">4<span>0</span>4</div>
         <div class="error-desc">啊哦~ 你所访问的页面不存在</div>
-        <div class="error-qq">数据可能被测试者误删,请加我的前端QQ群:73110051</div>
-        <div class="error-qq">或者点数据恢复</div>
+        <div class="error-qq">数据可能被测试者误删,请加我的作者QQ群:1990505897</div>
+        <!-- <div class="error-qq">或者点数据恢复</div> -->
         <div class="error-handle">
             <router-link to="/login">
                 <el-button type="primary" size="large">返回登陆页</el-button>

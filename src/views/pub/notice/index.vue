@@ -21,7 +21,7 @@
           :data="noticeList"
           border
           stripe
-          height="80%"
+          height="395"
           v-loading="loading"
           element-loading-text="拼命加载中"
           :default-sort="{prop:'notice_time', order:'descending'}"
@@ -50,10 +50,9 @@
             <el-table-column
               :label="$t('notice.table.operate')"
               prop="operation"
-              align="center"
-              width="200"
+              width="90"
             >
-            <template>
+            <template slot-scope="scope">
               <el-button
                 type="primary"
                 size="mini"

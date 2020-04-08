@@ -38,7 +38,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.el-pagination{padding:.5rem 0!important}
+.el-pagination{padding:.4rem 0!important}
 .page-component{
   text-align:center
 }
