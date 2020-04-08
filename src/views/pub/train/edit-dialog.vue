@@ -16,7 +16,7 @@
       <el-row>
         <el-col :span="24">
           <el-form-item label="竞赛培训内容:" prop="train_content">
-            <el-input v-model="item.train_content" placeholder="请输入竞赛培训内容" />
+            <el-input type='textarea' v-model="item.train_content" placeholder="请输入竞赛培训内容" />
           </el-form-item>
         </el-col>
       </el-row>
