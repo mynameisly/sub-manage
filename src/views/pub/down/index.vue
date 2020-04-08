@@ -37,15 +37,15 @@
               :label="$t('down.table.operate')"
               prop='operation'
               align='center'
-              width='90'
+              width='200'
             >
               <template slot-scope="scope">
                 <el-button
                   type='primary'
                   size='mini'
-                  class='el-icon-edit'
+                  class='el-icon-download'
                   @click.stop='$refs.updateDialog.open(focusedRecord)'
-                >修改</el-button>
+                >下载</el-button>
               </template>
               <template>
                 <el-button

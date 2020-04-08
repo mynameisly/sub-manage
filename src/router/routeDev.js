@@ -23,7 +23,7 @@ var routeDevList = [
       path: '/pub/info',
       component: () => import('@/views/pub/info/index'),
       meta: {
-        title: '首页学科竞赛信息'
+        title: '竞赛信息'
       }
     },
     {
