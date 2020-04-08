@@ -15,7 +15,11 @@
         </el-form-item>
       </el-form>
       <div class='down-content'>
-        <el-table :data='downList' border @cell-mouse-enter='mouseEnter'>
+        <el-table 
+         :data="downList"
+         height="390"
+         border
+         @cell-mouse-enter='mouseEnter'>
           <el-table-column 
             :label="$t('down.table.id.name')"
             type='index' 
@@ -33,9 +37,9 @@
               :label="$t('down.table.operate')"
               prop='operation'
               align='center'
-              width='200'
+              width='90'
             >
-              <template>
+              <template slot-scope="scope">
                 <el-button
                   type='primary'
                   size='mini'
@@ -54,9 +58,7 @@
             </el-table-column>
         </el-table>
       </div>
-      <div class='paginationDad'>
-        <page-component :total='downList.length' @pageChange='(item)=>handlePageChange(item)' />
-      </div>
+      <page-component :total="page.totalSize" :page="page" @pageChange="(item)=>handlePageChange(item)" />
       <add-dialog ref='addDialog' title='新增文件' @OnConfirm="(item)=>addOne(item,'post')" />
       <add-dialog ref='updateDialog' title='修改文件' @OnConfirm="(item)=>addOne(item,'post')" />
     </div>
@@ -84,7 +86,13 @@ export default {
           down_content: 'JavaScript高级程序设计'
         }
       ],
-      focusedRecord: {}
+      focusedRecord: {},
+      page: {
+        currentPage: 0, // 当前页
+        pageSize: 0, // 每页条数
+        totalSize: 0, // 总条数
+        totalPage: 0 // 总页数
+      }
     }
   },
   mounted() {
@@ -111,9 +119,14 @@ export default {
       // 将每一行的数据赋值给dialog弹框
       this.focusedRecord = Object.assign({}, data);// focusedRecord是弹框的data
     },
-    handlePageChange(item) {
-      console.log(item.pageSize, item.currentPage)
-      // 发送分页查询请求
+    handlePageChange (item) {
+      // axios.get('/sub/line/findAllLine?page=' + item.currentPage + '&pageSize=' + item.pageSize).then((res) => {
+      //   this.page.currentPage = res.data.data.currentPage
+      //   this.page.pageSize = res.data.data.size
+      //   this.page.totalPage = res.data.data.pages
+      //   this.page.totalSize = res.data.data.total
+      //   this.downList = res.data.data.list
+      // })
     },
     //删除表格一条数据
     deletedown() {

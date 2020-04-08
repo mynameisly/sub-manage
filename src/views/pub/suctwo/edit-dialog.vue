@@ -12,8 +12,8 @@
 
       <el-row>
         <el-col :span="24">
-          <el-form-item label="图片地址:" prop="suctwo_img">
-            <el-input v-model="item.suctwo_img" placeholder="请输入成果展示图片地址" />
+          <el-form-item label="图片:" prop="suctwo_img">
+            <el-input v-model="item.suctwo_img" placeholder="请输入图片地址" />
           </el-form-item>
         </el-col>
       </el-row>
@@ -35,8 +35,8 @@
     </el-form>
 
     <span slot="footer">
-      <el-button type="primary" plain @click="submitForm('dataForm')">提交</el-button>
-      <el-button type="primary" plain @click="resetForm('dataForm')">取消</el-button>
+      <el-button type="primary" @click="submitForm('dataForm')">提交</el-button>
+      <el-button type="primary" @click="resetForm('dataForm')">取消</el-button>
     </span>
   </el-dialog>
 </template>

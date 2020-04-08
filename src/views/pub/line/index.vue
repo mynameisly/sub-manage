@@ -22,7 +22,7 @@
           :data="lineList"
           border
           stripe
-          height="80%"
+          height="395"
           v-loading="loading"
           element-loading-text="拼命加载中"
           :default-sort="{prop: 'line_year',order: 'descending'}"
@@ -61,7 +61,7 @@
             align="center"
             width="100"
           >
-            <template>
+            <template slot-scope="scope">
               <el-button
                 type="primary"
                 size="mini"
