@@ -14,7 +14,7 @@
           :data="trainList"
           border
           stripe
-          height="80%"
+          height="395"
           v-loading="loading"
           :default-sort = "{prop: 'train_time', order: 'descending'}"
           element-loading-text="拼命加载中"
@@ -45,7 +45,7 @@
             align="center"
             width="100"
           >
-            <template>
+            <template slot-scope="scope">
               <el-button
                 type="primary"
                 size="mini"

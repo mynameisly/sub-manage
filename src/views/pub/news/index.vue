@@ -16,7 +16,11 @@
         </el-form-item>
       </el-form>
       <div class="news-content">
-        <el-table :data="newsList" border @cell-mouse-enter="mouseEnter">
+        <el-table
+        :data="newsList"
+        border
+        height="435"
+        @cell-mouse-enter="mouseEnter">
             <el-table-column
             :label="$t('news.table.id.name')"
             type="index"

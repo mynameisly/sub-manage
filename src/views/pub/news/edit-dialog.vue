@@ -1,34 +1,34 @@
 <template>
   <el-dialog id="edit-dialog" :title="title" :visible.sync="visable" :lock-scroll="false" center width="60%" top="5.5rem" :close-on-click-modal="false">
-    <el-form ref="dataForm" :model="item" :rules="rules" label-width="220px">
+    <el-form ref="dataForm" :model="item" :rules="rules" label-width="100px">
       <el-row>
         <el-col :span="24">
-          <el-form-item label="首页竞赛新闻图片:" prop="news_img">
-            <el-input v-model="item.news_img" placeholder="请上传首页竞赛新闻图片" />
+          <el-form-item label="新闻图片:" prop="news_img">
+            <el-input v-model="item.news_img" placeholder="请上传新闻图片" />
           </el-form-item>
         </el-col>
       </el-row>
 
       <el-row>
         <el-col :span="24">
-          <el-form-item label="首页竞赛新闻标题:" prop="news_title">
-            <el-input v-model="item.news_title" placeholder="请输入首页竞赛新闻标题" />
+          <el-form-item label="新闻标题:" prop="news_title">
+            <el-input v-model="item.news_title" placeholder="请输入新闻标题" />
           </el-form-item>
         </el-col>
       </el-row>
 
       <el-row>
         <el-col :span="24">
-          <el-form-item label="首页竞赛新闻简介:" prop="news_intro">
-            <el-input type='textarea' v-model="item.news_intro" placeholder="请输入首页竞赛新闻简介" />
+          <el-form-item label="新闻简介:" prop="news_intro">
+            <el-input type='textarea' v-model="item.news_intro" placeholder="请输入新闻简介" />
           </el-form-item>
         </el-col>
       </el-row>
     </el-form>
 
     <span slot="footer">
-      <el-button type="primary" plain @click="submitForm('dataForm')">提交</el-button>
-      <el-button type="primary" plain @click="resetForm('dataForm')">取消</el-button>
+      <el-button type="primary" @click="submitForm('dataForm')">提交</el-button>
+      <el-button type="primary" @click="resetForm('dataForm')">取消</el-button>
     </span>
   </el-dialog>
 </template>

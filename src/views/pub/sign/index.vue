@@ -27,7 +27,7 @@
           :data="signList"
           border
           stripe
-          height="80%"
+          height="395"
           v-loading="loading"
           element-loading-text="拼命加载中"
           :default-sort="{prop: 'sign_stime', order: 'descending'}"

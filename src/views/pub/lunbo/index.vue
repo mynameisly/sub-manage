@@ -9,7 +9,7 @@
       <div class="lunbo-content">
         <el-table
           :data="lunboList"
-          border
+          height="465"
           stripe>
             <el-table-column
             :label="$t('lunbo.table.id.name')"
@@ -34,7 +34,7 @@
               align="center"
               width="200"
             >
-              <template>
+              <template slot-scope="scope">
                 <el-button
                   type="danger"
                   size="mini"

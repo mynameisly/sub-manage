@@ -11,7 +11,7 @@
         :data="menuList"
         border
         stripe
-        height="80%"
+        height="420"
         v-loading="loading"
         element-loading-text="拼命加载中"
         @cell-mouse-enter="mouseEnter"
@@ -36,7 +36,7 @@
               align="center"
               width="100"
             >
-              <template>
+              <template slot-scope="scope">
                 <el-button
                   type="primary"
                   size="mini"
