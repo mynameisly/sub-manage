@@ -46,7 +46,7 @@ const addRoutes = {
       state.rootRoute=rootRoute;
       //动态添加路由
       router.addRoutes(rootRoute)
-      console.log('输出路由:',JSON.stringify(rootRoute));
+      // console.log('输出路由:',JSON.stringify(rootRoute));
     },
     add_Routes_Fresh(state){
        //if(state.routeParam&&state.routeParam.length>0){

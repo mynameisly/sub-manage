@@ -134,7 +134,7 @@ export default {
             })
             this.$router.push({path: '/index'})
             // const user = res.data.userInfo.username
-            // sessionStorage.setItem('username', user)
+            sessionStorage.setItem('username', this.loginForm.username)
             // this.setUser({ user })
             //存入菜单,渲染菜单
             this.$store.dispatch("add_Menus",json.data.sysMenuVoList);
