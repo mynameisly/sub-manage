@@ -20,7 +20,17 @@
       <el-row>
         <el-col :span="24">
           <el-form-item label="比赛icon:" prop="info_icon">
-            <el-input v-model="item.subject_icon" placeholder="请上传比赛icon" />
+            <el-select v-model="item.subject_icon" placeholder="比赛icon" >
+              <el-option
+                v-for="ele in icon"
+                :key="ele.value"
+                :label="ele.label"
+                :value="ele.value"
+              >
+                <span style="float: left">{{ ele.label }}</span>
+                <i style="float:right;line-height:34px" :class="ele.value" />
+              </el-option>
+            </el-select>
           </el-form-item>
         </el-col>
       </el-row>
@@ -71,7 +81,26 @@ export default {
         subject_state: [
           { required: true, message: '请输入比赛状态', trigger: 'change' }
         ]
-      }
+      },
+      icon: [
+        { label: "el-icon-user", value: "el-icon-user" },
+        { label: "el-icon-role", value: "el-icon-coordinate" },
+        { label: "el-icon-folder", value: "el-icon-folder" },
+        { label: "el-icon-setting", value: "el-icon-setting" },
+        { label: "el-icon-warning", value: "el-icon-warning-outline" },
+        { label: "el-icon-s-operation", value: "el-icon-s-operation" },
+        { label: "el-icon-menu", value: "el-icon-document-copy" },
+        { label: "el-icon-document", value: "el-icon-document" },
+        { label: "el-icon-monitor", value: "el-icon-monitor" },
+        { label: "el-icon-reading", value: "el-icon-reading" },
+        { label: "el-icon-collection", value: "el-icon-collection" },
+        { label: "el-icon-set-up", value: "el-icon-set-up" },
+        { label: "el-icon-copy-document", value: "el-icon-copy-document" },
+        { label: "el-icon-data-analysis", value: "el-icon-data-analysis" },
+        { label: "el-icon-office-building", value: "el-icon-office-building" },
+        { label: "el-icon-crop", value: "el-icon-crop" },
+        { label: "el-icon-circle-plus-outline", value: "el-icon-circle-plus-outline" }
+      ]
     }
   },
   methods: {

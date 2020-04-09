@@ -5,7 +5,17 @@
       <el-row>
         <el-col :span="24">
           <el-form-item label="比赛视频:" prop="suc_video">
-            <el-input v-model="item.suc_video" placeholder="请上传首页成果展示大赛视频" />
+            <el-upload
+              ref="upload"
+              action="none"
+              drag
+              list-type="text"
+              :auto-upload="false"
+              :before-upload="beforeupload"
+              >
+              <i class="el-icon-upload"></i>
+              <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+            </el-upload>
           </el-form-item>
         </el-col>
       </el-row>
@@ -65,6 +75,9 @@ export default {
       axios.get('/sub/suc/findSucById?suc_id=' + this.item.suc_id).then((res) => {
         this.item = res.data.data
       })
+    },
+    beforeupload(file) {
+
     },
     submitForm (dataForm) {
       // console.log('用户提交了信息了')

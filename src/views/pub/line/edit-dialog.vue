@@ -19,8 +19,18 @@
 
       <el-row>
         <el-col :span="24">
-          <el-form-item label="竞赛图片:" prop="line_img">
-            <el-input v-model="item.line_img" placeholder="请上传竞赛图片" />
+          <el-form-item label="视频/图片:" prop="line_img">
+            <el-upload
+              ref="upload"
+              action="none"
+              drag
+              list-type="text"
+              :auto-upload="false"
+              :before-upload="beforeupload"
+              >
+              <i class="el-icon-upload"></i>
+              <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+            </el-upload>
           </el-form-item>
         </el-col>
       </el-row>
@@ -88,6 +98,9 @@ export default {
       axios.get('/sub/line/findLineById?line_id=' + this.item.line_id).then((res) => {
         this.item = res.data.data
       })
+    },
+    beforeupload(file) {
+
     },
     submitForm (dataForm) {
       console.log('用户提交了信息了')

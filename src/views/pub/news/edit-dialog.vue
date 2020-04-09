@@ -4,7 +4,17 @@
       <el-row>
         <el-col :span="24">
           <el-form-item label="新闻图片:" prop="news_img">
-            <el-input v-model="item.news_img" placeholder="请上传新闻图片" />
+            <el-upload
+              ref="upload"
+              action="none"
+              drag
+              list-type="text"
+              :auto-upload="false"
+              :before-upload="beforeupload"
+              >
+              <i class="el-icon-upload"></i>
+              <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+            </el-upload>
           </el-form-item>
         </el-col>
       </el-row>
@@ -86,6 +96,9 @@ export default {
         this.item = item;
         this.type = this.item.type;
       }
+    },
+    beforeupload(file) {
+
     },
     submitForm(dataForm) {
       console.log('用户提交了信息了');

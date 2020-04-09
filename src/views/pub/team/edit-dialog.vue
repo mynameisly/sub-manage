@@ -4,7 +4,17 @@
       <el-row>
         <el-col :span="24">
           <el-form-item label="图片:" prop="team_img">
-            <el-input v-model="item.team_img" placeholder="请上传二级团队建设图片" />
+            <el-upload
+              ref="upload"
+              action="none"
+              drag
+              list-type="text"
+              :auto-upload="false"
+              :before-upload="beforeupload"
+              >
+              <i class="el-icon-upload"></i>
+              <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+            </el-upload>
           </el-form-item>
         </el-col>
       </el-row>

@@ -7,13 +7,13 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      redirect: '/index'
+      redirect: '/login'
     },
     {
       path: '/login',
       component: resolve => require(['@/components/login.vue'], resolve),
       meta: {
-        title: '登陆'
+        title: '登录'
       }
     },
     {

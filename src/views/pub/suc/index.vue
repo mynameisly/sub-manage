@@ -61,8 +61,8 @@
           </el-table-column>
         </el-table>
         <page-component :total="page.totalSize" :page="page" @pageChange="(item)=>handlePageChange(item)" />
-        <add-dialog ref="addDialog" title="添加竞赛历程" @OnConfirm="(item)=>addOne(item)" />
-        <add-dialog ref="updateDialog" title="修改竞赛历程" @OnConfirm="(item)=>updateOne(item)" />
+        <add-dialog ref="addDialog" title="添加竞赛成果信息" @OnConfirm="(item)=>addOne(item)" />
+        <add-dialog ref="updateDialog" title="修改竞赛成果信息" @OnConfirm="(item)=>updateOne(item)" />
       </div>
     </div>
   </div>
